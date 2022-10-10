@@ -8,5 +8,5 @@ let li=document.createElement('li');
 li.textContent='Seattle Salmon Cookie sales data'
 
 let sea_sale=document.createElement('article')
-sea_sales.textContent='Seattle Sale Data';
+sea_sale.textContent='Seattle Sale Data';
 art.appendChild(sea_sales);
