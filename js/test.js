@@ -108,6 +108,7 @@ Sales.prototype.renderTable = function() {
     tbodyElem.appendChild(totalSalesData); 
     totalSalesData.textContent=totalSalesNum;
 
+    
   
   }
 
