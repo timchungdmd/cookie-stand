@@ -6,9 +6,22 @@
 //let sea_sale=document.createElement('article')
 //li.appendChild(sea_sale);
 //sea_sale.textContent='Seattle Sale Data';
+/* const tablecontainer = document.getElementById('sales-table');
+// get proof of life when inteereacting with the DOM:
+console.log(table);
+
+const salesTable = document.querySelector('table');
+console.log(salesTable;
+const kittenBody = document.querySelector('table tbody');
+
+const salesHead = document.querySelector('table thead');
+const salesFoot = document.querySelector('table tfoot');
+
+ */
+
 
 //ul.appendChild(sea_sale);
-const cookieStand=document.getElementById('salmon-cookies');
+/* const cookieStand=document.getElementById('salmon-cookies');
 let art=document.createElement('article');
 art.textContent='Salmon Cookie Sales Numbers';
 cookieStand.appendChild(art); 
@@ -17,6 +30,11 @@ art.appendChild(ul);
 let li=document.createElement('li');
 
 
+function Data(location, minCust, maxCust, openHr,){
+
+}
+function Render(){
+ */
 
 const seattle_data={
   location: 'Seattle',
@@ -194,3 +212,10 @@ art.appendChild(ul);
 lima_data.saleHr();
 ul.appendChild(li);
 li.textContent='Total :'+lima_data.totalSales;
+
+
+const kittenbody=document.querySelectorAll('table tbody');
+for(let i=0;i<this.likes.length;i++){
+  let td=document.createElement('td');
+  td.textContent=this.likes[i]
+  tr.appendChild(td);}

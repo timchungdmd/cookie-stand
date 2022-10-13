@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const salestablecontainer = document.getElementById/* ('sales-table');
+/* const salestablecontainer = document.getElementById('sales-table');
 // get proof of life when inteereacting with the DOM:
 console.log(salestablecontainer);
 
@@ -15,7 +15,9 @@ const salesFoot = document.querySelector('table tfoot');
 
 // Constructor Function, a "Factory" for creating Kitten instances.
 
-
+let salesPerHrArray=[];
+let openHrsArray =['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+let totalSalesNum=0
 
 function Sales(location, minCust,maxCust, avgSales) {
   // function name starts with capital letter because it's a constructor function.
@@ -23,30 +25,26 @@ function Sales(location, minCust,maxCust, avgSales) {
   this.minCust = minCust,
   this.maxCust = maxCust,
   this.avgSales = avgSales,
-  this.openHrsArray=['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'],
-  this.salesPerHrArray=[],
-  this.cities=['Seattle','Tokyo','Seattle','Dubai','Lima']
+  this.cities=['Seattle','Tokyo','Dubai','Paris','Lima'],
+  this.randNum=function(){
+    return Math.floor(Math.random()*(maxCust-minCust+1)+minCust)
+  },
+  this.salesNumPerHr=function(){
+    return Math.floor(avgSales*this.randNum())
+  }
+  this.totalSales=function(){
+    for(let i=0; i<openHrsArray.length; i++){ 
+      return totalSalesNum+=this.salesNumPerHr();
+    
+    }
+  }
 }
 
 
- Sales.prototype.randCustPerHr=function(){
-      return Math.floor(Math.random()*(this.maxCust-this.minCust+1)+this.minCust)
- }
 
-Sales.prototype.salsesPerHr=function(){
-  for(let i=0; i<this.openHrsArray.length; i++){  
-    Math.floor(this.avgSales*(Math.floor(this.randCustPerHr())))
-    return salePerHrArray.push(this.salsesPerHrArray());   
-  }}
 
 // METHODS
 // methods get added to the constructor's prototyp
-Sales.prototype.totalSales=function(){
-  for(let i=0; i<openHrsArray.length; i++){ 
-  let salesPerHr=Math.floor(this.avgSales*(Math.floor(this.randCustPerHr())))
-  return salePerHrArray.push(salesPerHr());
-
-}}
 
 
 Sales.prototype.renderTable = function() {
@@ -54,22 +52,13 @@ Sales.prototype.renderTable = function() {
   salesBody.appendChild(tr);
   let tdname = document.createElement('td');
   tdname.textContent = this.location;
-  tr.appendChild(tdname);
-  for (let i = 0; i < openHrArray.length; i++) {
-    let td = document.createElement('td');
-    td.textContent = totalSalesArray[i];
-    tr.appendChild(td);
   }
-}
-
-
-
-Sales.prototype.render = function () {
 
 
   // get the "container" for kitten profiles
   const containerElem = document.getElementById('sales-table');
 
+  
   // each kitten profile is in an article
   const articleElem = document.createElement('article');
   containerElem.appendChild(articleElem);
@@ -77,56 +66,67 @@ Sales.prototype.render = function () {
   // add the article heading
   const headingElem = document.createElement('h2');
   articleElem.appendChild(headingElem);
-  headingElem.textContent = this.location+' Sales Data.';
+  headingElem.textContent =' Sales Data per Store';
 
   
   const tableElem = document.createElement('table');
   articleElem.appendChild(tableElem);
 
+  const thead=document.createElement('thead');
+  tableElem.appendChild(thead);
+
+  const headerRow=document.createElement('th');
+    thead.appendChild(headerRow);
+    headerRow.textContent = 'Store Hours';
+
+  for(let i=0; i<openHrsArray.length; i++) {
+    const headerRow=document.createElement('th');
+    thead.appendChild(headerRow);
+    headerRow.textContent = openHrsArray[i];
+  }
   const tbodyElem = document.createElement('tbody');
   tableElem.appendChild(tbodyElem);
 
-  const firstCol=document.createElement('th');
-  tbodyElem.appendChild(firstCol);
 
-  for(let i=0; i<this.openHrsArray.length; i++) {
-    let headerRow=document.createElement('th');
+  Sales.prototype.render = function () { 
+    const eachRow=document.createElement('tr');
+    tbodyElem.appendChild(eachRow);
+
+
+    const headerRow=document.createElement('th');
     tbodyElem.appendChild(headerRow);
-    headerRow.textContent = this.openHrsArray[i];
+    headerRow.textContent = this.location;
+  
+
+    for(let j=0; j<openHrsArray.length; j++){
+      let salesData=document.createElement('td');
+      tbodyElem.appendChild(salesData); 
+      salesData.textContent=this.salesNumPerHr();
+    }
+  
+    const totalSalesData=document.createElement('td');
+    tbodyElem.appendChild(totalSalesData); 
+    totalSalesData.textContent=totalSalesNum;
+
+    
+  
   }
 
-  for(let i=0; i<this.openHrsArray.length; i++) { 
-    let rowData=document.createElement('td');
-    tbodyElem.appendChild(rowData); 
-    rowData.textContent=this.salesPerHrArray[i];
-
-  }
-
-
-  for(let i=0; i<this.cities.length; i++) {
-    let headerRow=document.createElement('tr');
-    tbodyElem.appendChild(headerRow);
-    headerRow.textContent = this.cities[i];
-  }
-  const totalRow=document.createElement('tr');
-  tbodyElem.appendChild(totalRow); 
-  totalRow.textContent = 'Total';
 
   /* const openTimeCell=document.createElement('th');
   headerRow.appendChild(openTimeCell); */
  
-  const dataRow=document.createElement('td');
-  tbodyElem.appendChild(dataRow);
+/*   const dataRow=document.createElement('td');
+  tbodyElem.appendChild(dataRow); */
 
- const footerRow=document.createElement('th');
-  tbodyElem.appendChild(footerRow);
-  footerRow.textContent = 'Footer';
-
-
-
-
-}
 
 const seattle = new Sales('Seattle', 23,65,6.3);
-seattle.totalSales();
 seattle.render();
+const tokyo=new Sales('Tokyo',3,24,1.2)
+tokyo.render();
+const  dubai= new Sales('Dubai',11,38,3,7);
+dubai.render();
+const paris = new Sales('Paris',20,38,2.3);
+paris.render();
+const lima=new Sales('Lima',2,16,4.6);
+lima.render();
