@@ -1,0 +1,49 @@
+*{
+  font-family: sans-serif;
+}
+.menu-bar {
+  background-color: #1988f7;
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: 1.5rem 20%
+}
+
+.item {
+  color: white;
+  background-color: transparent;
+  font-size: 18px;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 14px 20px;
+}
+
+.item.title {
+  font-weight: 600;
+}
+
+.item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+main{
+  box-sizing: border-box;
+ margin: 3rem 10rem 3rem 10rem;
+ 
+}
+#sales-table{
+  box-sizing: border-box;
+  margin: auto 10rem;
+  display: inline-block;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+table{
+  border:1rem;
+  border-color: black;
+}
+footer{
+  box-sizing: border-box;
+  margin: auto 10rem;
+  text-align: center;
+}
