@@ -1,5 +1,5 @@
 *{
-  font-family: sans-serif,;
+  font-family: sans-serif;
 }
 .menu-bar {
   background-color: #1988f7;
@@ -41,4 +41,9 @@ main{
 table{
   border:1rem;
   border-color: black;
+}
+footer{
+  box-sizing: border-box;
+  margin: auto 10rem;
+  text-align: center;
 }
