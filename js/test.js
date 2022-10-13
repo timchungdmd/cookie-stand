@@ -89,14 +89,6 @@ function Sales(location, minCust,maxCust, avgSales) {
     totalSales=[];
   }
 
-
-  /* const openTimeCell=document.createElement('th');
-  headerRow.appendChild(openTimeCell); */
- 
-/*   const dataRow=document.createElement('td');
-  tbodyElem.appendChild(dataRow); */
-
-
 const seattle = new Sales('Seattle', 23,65,6.3);
 seattle.render();
 const tokyo=new Sales('Tokyo',3,24,1.2)
