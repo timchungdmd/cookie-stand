@@ -127,7 +127,7 @@ div#img{
 img.family{
   margin: auto;
   align-content: center;
-  flex: auto;
+  display: flex;
   width: 320px;
   box-sizing: border-box;
   flex-direction: row;
