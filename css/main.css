@@ -124,7 +124,7 @@ div#img{
   text-align: center;
   flex: auto;
 }
-img.family{
+.family{
   margin: auto;
   align-content: center;
   display: flex;
