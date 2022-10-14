@@ -9,6 +9,7 @@
   margin: 1.5rem 20%
 }
 h1{
+  flex: auto;
   text-align: center;
   display: flex;
   box-sizing: border-box;
@@ -72,4 +73,63 @@ footer{
   box-sizing: border-box;
   margin: 3rem 10rem 3rem 10rem;
   text-align: center;
+}
+table{
+  box-sizing: border-box;
+  box-shadow: 1rem;
+  flex-direction: row;
+  margin: auto;
+  align-content: center;
+  border-style: solid;
+  border-color: rgba(127, 255, 212, 0.151);
+}
+div.group img{
+  width: 160px;
+  float: right;
+  flex-direction: row;
+
+}
+
+img#animatefish{
+  width: 120px;
+  position: absolute;
+  -webkit-animation: linear infinite ;
+  -webkit-animation-name: run;
+  -webkit-animation-duration: 15s;
+}
+@-webkit-keyframes run {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0;    
+  }
+}
+
+h1 a{
+  margin-right: 1rem;
+  border-bottom: 1rem lightskyblue;
+  
+}
+
+div#img img{
+  width: 150px;
+  flex-direction: row;
+}
+div#img{
+  margin: auto;
+  text-align: center;
+  flex: auto;
+}
+img.family{
+  margin: auto;
+  align-content: center;
+  flex: auto;
+  width: 320px;
+  box-sizing: border-box;
+  flex-direction: row;
+
 }
