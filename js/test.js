@@ -116,7 +116,7 @@ let handleSubmit = function(event) {
   let maxCust = parseInt(event.target.maxCust.value);
 
   // function Sale(name, about, src, alt, likes) {
-  let newstore = new Sale(name, minCust, maxCust, avgSalePerCust);
+  let newstore = new Sales(name, minCust, maxCust, avgSalePerCust);
   newstore.render();
 }
 

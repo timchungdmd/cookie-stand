@@ -56,12 +56,13 @@ main p{
   font-size: 2rem;
   font-weight: bolder;
 }
-#sales-table{
+div#sales-table{
   box-sizing: border-box;
   margin: auto 10rem;
-  display: inline-block;
+  display: flexbox;
   justify-content: flex-start;
   box-sizing: border-box;
+  text-align: center;
 }
 table{
   border:1rem;
