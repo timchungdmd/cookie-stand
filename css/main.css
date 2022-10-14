@@ -8,7 +8,16 @@
   box-sizing: border-box;
   margin: 1.5rem 20%
 }
-
+h1{
+  text-align: center;
+  display: flex;
+  box-sizing: border-box;
+  margin: 1.5rem 20%;
+}
+form{
+  border: 1px solid, black;
+  box-sizing: border-box;
+  margin: 3rem 30%;}
 .item {
   color: white;
   background-color: transparent;
@@ -17,7 +26,18 @@
   box-sizing: border-box;
   padding: 14px 20px;
 }
+ul{
+  list-style: none;
+  text-align: center;
+}
+ul input{
+  border: 1px solid, black; 
+  padding: 0.1rem;
+}
 
+li label{
+  font-weight:bold;
+}
 .item.title {
   font-weight: 600;
 }
@@ -30,6 +50,11 @@ main{
   box-sizing: border-box;
  margin: 3rem 10rem 3rem 10rem;
  
+}
+main p{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
 }
 #sales-table{
   box-sizing: border-box;
@@ -44,6 +69,6 @@ table{
 }
 footer{
   box-sizing: border-box;
-  margin: auto 10rem;
+  margin: 3rem 10rem 3rem 10rem;
   text-align: center;
 }

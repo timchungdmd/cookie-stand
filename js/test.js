@@ -99,3 +99,30 @@ const paris = new Sales('Paris',20,38,2.3);
 paris.render();
 const lima=new Sales('Lima',2,16,4.6);
 lima.render();
+
+
+let form = document.querySelector(`form`);
+console.log(form);
+
+// 3. Declar an event handler (a function)
+let handleSubmit = function(event) {
+  event.preventDefault();
+  console.log('the form submitted');
+  // nameKitten comes from the name attribute in the HTML:
+  console.log(event.target.location.value);
+
+  let name = event.target.location.value;
+  let avgSalePerCust = parseInt(event.target.avgSalePerCust.value);
+  let minCust = parseInt(event.target.minCust.value);
+  let maxCust = parseInt(event.target.maxCust.value);
+
+  // function Kitten(name, about, src, alt, likes) {
+  let newstore = new Sale(name, minCust, maxCust, avgSalePerCust);
+  console.log(newKitty);
+  newstore.render();
+}
+
+// 2. Add event listener
+// what type of event? Submit
+
+form.addEventListener('submit', handleSubmit)
