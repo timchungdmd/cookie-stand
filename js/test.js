@@ -3,6 +3,7 @@ let totalSales=[];
 let salesPerHrArray=[];
 let openHrsArray =['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let totalsalesNum=0
+let footerSum=0;
 //Sales constructor
 function Sales(location, minCust,maxCust, avgSales) {
   // function name starts with capital letter because it's a constructor function.
@@ -74,6 +75,7 @@ function Sales(location, minCust,maxCust, avgSales) {
     
     for(let j=0; j<openHrsArray.length; j++){
       let salesData=document.createElement('td');
+      salesData.id = j;
       tbodyElem.appendChild(salesData); 
       salesData.textContent=totalSales[j];
     }
@@ -87,9 +89,28 @@ function Sales(location, minCust,maxCust, avgSales) {
 
     totalsalesNum=0
     totalSales=[];
+   
   }
 
-const seattle = new Sales('Seattle', 23,65,6.3);
+  const tfooter=document.createElement('tfooter');
+  tableElem.appendChild(tfooter);
+  const totalRow=document.createElement('th');
+  tfooter.appendChild(totalRow);
+  totalRow.textContent = 'Total Sum';
+
+  const dataRow=document.createElement('td');
+  tableElem.appendChild(dataRow);
+  dataRow.textContent='test sum';
+
+  const allTableRows = document.querySelectorAll('#sales-table article table tbody td');
+  
+
+
+
+
+
+
+  const seattle = new Sales('Seattle', 23,65,6.3);
 seattle.render();
 const tokyo=new Sales('Tokyo',3,24,1.2)
 tokyo.render();
@@ -99,3 +120,28 @@ const paris = new Sales('Paris',20,38,2.3);
 paris.render();
 const lima=new Sales('Lima',2,16,4.6);
 lima.render();
+
+
+let form = document.querySelector(`form`);
+console.log(form);
+
+// 3. Declar an event handler (a function)
+let handleSubmit = function(event) {
+  event.preventDefault();
+  console.log('the form submitted');
+  console.log(event.target.location.value);
+
+  let name = event.target.location.value;
+  let avgSalePerCust = parseInt(event.target.avgSalePerCust.value);
+  let minCust = parseInt(event.target.minCust.value);
+  let maxCust = parseInt(event.target.maxCust.value);
+
+  // function Sale(name, about, src, alt, likes) {
+  let newstore = new Sales(name, minCust, maxCust, avgSalePerCust);
+  newstore.render();
+}
+
+// 2. Add event listener
+// what type of event? Submit
+
+form.addEventListener('submit', handleSubmit)
