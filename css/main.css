@@ -1,5 +1,7 @@
 *{
-  font-family: sans-serif,'Bebas Neue', cursive;
+  font-family: Arial, Verdana,Georgia, Times;
+  font-family: 'Bebas Neue', cursive;
+font-family: 'Oswald', sans-serif;
 }
 .menu-bar {
   background-color: #1988f7;
@@ -30,10 +32,12 @@ form{
 ul{
   list-style: none;
   text-align: center;
+  
 }
 ul input{
   border: 1px solid, black; 
   padding: 0.1rem;
+  
 }
 
 li label{
@@ -58,17 +62,14 @@ main p{
   font-weight: bolder;
 }
 div#sales-table{
+  margin: 1rem auto;
   box-sizing: border-box;
-  margin: auto 10rem;
-  display: flexbox;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  text-align: center;
+  display: flex-box;
+    box-sizing: border-box;
+    text-align: center;
 }
-table{
-  border:1rem;
-  border-color: black;
-}
+
+
 footer{
   box-sizing: border-box;
   margin: 3rem 10rem 3rem 10rem;
