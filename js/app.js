@@ -112,18 +112,14 @@ Sales.prototype.render = function () {
   totalsalesNum = 0;
   totalSales = [];
 
+ 
+  };
   
-}
+
 
 //columnSum
-function totalsum(){
-  for(x=0;x<openHrsArray.length;x++) {
-    openHrsArray.id=x
-    for(y=0;y<arrayOfArrays.length;y++){
-      arrayOfArrays.id=y
-      columnTotal+=(arrayOfArrays[y])[x];
-    }
-}};
+
+  
 
 
 
@@ -138,10 +134,22 @@ const tfooter=document.createElement('tfooter');
 
 
 
-  for(let a=0; a<14; a++){
+  let totalsum=function(){
+    for(let x=0;x<openHrsArray.length;x++) {
+      openHrsArray.id=x
+      for(let y=0;y<arrayOfArrays.length;y++){
+        arrayOfArrays.id=y
+        columnTotal+=(arrayOfArrays[y])[x];
+        return columnTotal;
+      }
+      
+    }
+  
+  }
+  for(let z=0;z<openHrsArray.length;z++) {
   const dataRow=document.createElement('td');
-  tableElem.appendChild(dataRow);
-  dataRow.textContent=columnTotal;
+    tableElem.appendChild(dataRow);
+    dataRow.textContent=totalsum;
   }
 
 

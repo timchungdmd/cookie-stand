@@ -2,13 +2,28 @@
   font-family: Arial, Verdana,Georgia, Times;
   font-family: 'Bebas Neue', cursive;
 font-family: 'Oswald', sans-serif;
+position: relative;
+
+}
+nav{
+  background-color: #1988f7;
+
 }
 .menu-bar {
   background-color: #1988f7;
   display: flex;
-  justify-content: flex-start;
   box-sizing: border-box;
-  margin: 1.5rem 20%
+  position: sticky;
+  display: flex;
+  width: 100%;
+  
+}
+.item.title{
+  font-family: 'Bebas Neue', cursive;
+  font-size:3rem;
+  color: rgb(251, 167, 158);
+  margin-right: 7rem;
+ 
 }
 h1{
   flex: auto;
@@ -48,12 +63,23 @@ li label{
 }
 
 .item:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(139, 139, 139, 0.1);
+  color: rgba(239, 151, 141, 0.658);
+  border-radius: 3rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+div.container{
+  background-color: rgba(255, 235, 205, 0.325);
+  box-sizing: border-box;
+  margin: auto
 }
 
 main{
   box-sizing: border-box;
  margin: 3rem 10rem 3rem 10rem;
+ background-color: rgba(255, 235, 205, 0.258);
+
  
 }
 main p{
@@ -68,7 +94,11 @@ div#sales-table{
     box-sizing: border-box;
     text-align: center;
 }
-
+table, th, td {
+  border: 1px solid;}
+th{
+  background-color: aliceblue;
+}
 
 footer{
   box-sizing: border-box;
@@ -84,10 +114,13 @@ table{
   border-style: solid;
   border-color: rgba(127, 255, 212, 0.151);
 }
-div.group img{
+
+
+div.group2 img{
   width: 160px;
   float: right;
   flex-direction: row;
+  padding-left: 2rem
 
 }
 
