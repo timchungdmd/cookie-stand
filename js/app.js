@@ -4,6 +4,7 @@ let salesPerHrArray = [];
 let arrayOfArrays = [];
 let totalsalesNum = 0; //right last column sum of each row
 let columnTotal =0; //sum of each column dat
+
 //array of store open hours
 let openHrsArray = [
   "6am",
@@ -109,6 +110,8 @@ Sales.prototype.render = function () {
   tbodyElem.appendChild(totalSalesCol);
   totalSalesCol.textContent = totalsalesNum;
 
+  
+
   totalsalesNum = 0;
   totalSales = [];
 
@@ -134,27 +137,29 @@ const tfooter=document.createElement('tfooter');
 
 
 
-  let totalsum=function(){
-    
-    for(let x=0;x<openHrsArray.length;x++) {
+  const totalsum=function(){
+    let columnSum=0
+    for(let x=0;x<arrayOfArrays.length;x++) {
       
       openHrsArray.id=x
-      for(let y=0;y<arrayOfArrays.length;y++){
+      for(let y=0;y<openHrsArray.length;y++){
         arrayOfArrays.id=y
-        columnTotal+=(arrayOfArrays[y])[x];
+        
+        columnSum=columnSum+(arrayOfArrays[x])[y];
         
       }
-      return columnTotal;
-    }
-    
+    }return columnSum;
   }
-  for(let z=0;z<openHrsArray.length;z++) {
+
+  for(let x=0;x<openHrsArray.length;x++){
   const dataRow=document.createElement('td');
     tableElem.appendChild(dataRow);
-    dataRow.textContent=totalsum();
+    dataRow.textContent=(totalsum());
   }
-
-
+  
+    const totalSalesColfinal = document.createElement("td");
+    tableElem.appendChild(totalSalesColfinal);
+    totalSalesColfinal.textContent = totalsum();
 
 
 
