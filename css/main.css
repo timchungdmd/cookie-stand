@@ -1,12 +1,29 @@
 *{
-  font-family: sans-serif,'Bebas Neue', cursive;
+  font-family: Arial, Verdana,Georgia, Times;
+  font-family: 'Bebas Neue', cursive;
+font-family: 'Oswald', sans-serif;
+position: relative;
+
+}
+nav{
+  background-color: #1988f7;
+
 }
 .menu-bar {
   background-color: #1988f7;
   display: flex;
-  justify-content: flex-start;
   box-sizing: border-box;
-  margin: 1.5rem 20%
+  position: sticky;
+  display: flex;
+  width: 100%;
+  
+}
+.item.title{
+  font-family: 'Bebas Neue', cursive;
+  font-size:3rem;
+  color: rgb(251, 167, 158);
+  margin-right: 7rem;
+ 
 }
 h1{
   flex: auto;
@@ -30,10 +47,12 @@ form{
 ul{
   list-style: none;
   text-align: center;
+  
 }
 ul input{
   border: 1px solid, black; 
   padding: 0.1rem;
+  
 }
 
 li label{
@@ -44,12 +63,23 @@ li label{
 }
 
 .item:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 1.5rem;
+  font-family: 'font-family: 'Bebas Neue', cursive;;
+}
+
+div.container{
+  background-color: rgba(255, 235, 205, 0.325);
+  box-sizing: border-box;
+  margin: auto
 }
 
 main{
   box-sizing: border-box;
  margin: 3rem 10rem 3rem 10rem;
+ background-color: rgba(255, 235, 205, 0.258);
+
  
 }
 main p{
@@ -58,35 +88,38 @@ main p{
   font-weight: bolder;
 }
 div#sales-table{
+  margin: 1rem auto;
   box-sizing: border-box;
-  margin: auto 10rem;
-  display: flexbox;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  text-align: center;
+  display: flex-box;
+    box-sizing: border-box;
+    text-align: center;
 }
-table{
-  border:1rem;
-  border-color: black;
+table, th, td {
+  border: 1px solid;}
+th{
+  background-color: aliceblue;
 }
+
 footer{
   box-sizing: border-box;
   margin: 3rem 10rem 3rem 10rem;
   text-align: center;
 }
 table{
+  display:inside;
   box-sizing: border-box;
-  box-shadow: 1rem;
   flex-direction: row;
   margin: auto;
-  align-content: center;
   border-style: solid;
-  border-color: rgba(127, 255, 212, 0.151);
+  border-color: rgba(127, 255, 212, 0.151)
 }
-div.group img{
+
+
+div.group2 img{
   width: 160px;
   float: right;
   flex-direction: row;
+  padding-left: 2rem
 
 }
 
@@ -124,12 +157,17 @@ div#img{
   text-align: center;
   flex: auto;
 }
-img.family{
+.family{
   margin: auto;
   align-content: center;
-  flex: auto;
+  display: flex;
   width: 320px;
   box-sizing: border-box;
   flex-direction: row;
 
+}
+
+h1#highlight{
+  font-family: sans-serif;
+  color: purple
 }

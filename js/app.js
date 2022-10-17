@@ -1,188 +1,199 @@
+"use strict";
+let totalSales = [];
+let salesPerHrArray = [];
+let arrayOfArrays = [];
+let totalsalesNum = 0; //right last column sum of each row
+let columnTotal =0; //sum of each column dat
 
+//array of store open hours
+let openHrsArray = [
+  "6am",
+  "7am",
+  "8am",
+  "9am",
+  "10am",
+  "11am",
+  "12am",
+  "1pm",
+  "2pm",
+  "3pm",
+  "4pm",
+  "5pm",
+  "6pm",
+  "7pm",
+]; //store open hours
 
-const seattle_data={
-  location: 'Seattle',
-  minCustHr:23,
-  maxCustHr:65,
-  avgSaleCust:6.3,
-  totalSales:0,
-  saleHr: function() {
-    for (let i=0; i<14;i++){
-      let time=['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-      let minCustHr=this.minCustHr;
-      let maxCustHr=this.maxCustHr;
-      let avgSaleCust=this.avgSaleCust
-      let li=document.createElement('li');
-      ul.appendChild(li);
-      let numberSale=Math.floor(avgSaleCust*randomCust(minCustHr,maxCustHr));
-      this.totalSales+=numberSale;
-    li.textContent=time[i]+':'+numberSale+' cookies sold to '+randomCust(maxCustHr,minCustHr)+' customers.';
-    }
+//Sales constructor
+function Sales(location, minCust, maxCust, avgSales) {
+  // function name starts with capital letter because it's a constructor function.
+  (this.location = location),
+    (this.minCust = minCust),
+    (this.maxCust = maxCust),
+    (this.avgSales = avgSales),
+    //randomly generated customer number between max and min
+    (this.randNum = function () {
+      return Math.floor(Math.random() * (maxCust - minCust + 1) + minCust);
+    }),
+    //sales figure per hour avgsale * customer number every hour
+    (this.salesNumPerHr = function () {
+      let sales = Math.floor(avgSales * this.randNum());
+      return sales;
+    });
+}
 
+// get the "container" for sales table
+const containerElem = document.getElementById("sales-table");
+
+// where the table will be located profile
+const articleElem = document.createElement("article");
+containerElem.appendChild(articleElem);
+
+// add the article heading
+const headingElem = document.createElement("h2");
+articleElem.appendChild(headingElem);
+headingElem.textContent = " Sales Data per Store";
+
+const tableElem = document.createElement("table");
+articleElem.appendChild(tableElem);
+
+const thead = document.createElement("thead");
+tableElem.appendChild(thead);
+//adding store open time to headerRow//////
+const headerRow = document.createElement("th");
+thead.appendChild(headerRow);
+headerRow.textContent = "Store Hours";
+for (let i = 0; i < openHrsArray.length; i++) {
+  const headerRow = document.createElement("th");
+  thead.appendChild(headerRow);
+  headerRow.textContent = openHrsArray[i];
+} /////////////////////////////////////
+
+//////adding last column showing total of the row////
+const totalSalesCol = document.createElement("th");
+thead.appendChild(totalSalesCol);
+totalSalesCol.textContent = "Total Sales";
+////////////////////////////////////////////
+
+//////creating and appending body of the table//////
+const tbodyElem = document.createElement("tbody");
+tableElem.appendChild(tbodyElem);
+////////////////////////////////////////////////
+
+Sales.prototype.render = function () {
+  const eachRow = document.createElement("tr");
+  tbodyElem.appendChild(eachRow);
+
+  const headerRow = document.createElement("th");
+  tbodyElem.appendChild(headerRow);
+  headerRow.textContent = this.location;
+
+  for (let j = 0; j < openHrsArray.length; j++) {
+    totalSales.push(this.salesNumPerHr());
   }
-}
-function randomCust(min,max){
-  return Math.floor(Math.random()*(max-min+1)+min);
-}
-ul.textContent=seattle_data.location+' Sales'
-art.appendChild(ul);
-seattle_data.saleHr();
-ul.appendChild(li);
-li.textContent='Total :'+seattle_data.totalSales;
+  //appending sales per hour array to arrayOfArrays array. This will contain all the sales data per hour per store in its own array
+  arrayOfArrays.push(totalSales);
 
 
-ul=document.createElement('ul');
-art.appendChild(ul);
-li=document.createElement('li');
 
-
-const tokyo_data={
-  location: 'Tokyo',
-  minCustHr:3,
-  maxCustHr:24,
-  avgSaleCust:1.2,
-  totalSales:0,
-  saleHr: function() {
-    for (let i=0; i<14;i++){
-      let time=['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-      let minCustHr=this.minCustHr;
-      let maxCustHr=this.maxCustHr;
-      let avgSaleCust=this.avgSaleCust;
-      let li=document.createElement('li');
-      ul.appendChild(li);
-      let numberSale=Math.floor(avgSaleCust*randomCust(minCustHr,maxCustHr));
-      this.totalSales+=numberSale;
-    li.textContent=time[i]+':'+numberSale+' cookies sold to '+randomCust(maxCustHr,minCustHr)+' customers.';
-    }
-
+  for (let j = 0; j < openHrsArray.length; j++) {
+    let salesData = document.createElement("td");
+    salesData.id = j;
+    tbodyElem.appendChild(salesData);
+    salesData.textContent = totalSales[j];
   }
-}
-function randomCust(min,max){
-  return Math.floor(Math.random()*(max-min+1)+min);
-}
-ul.textContent=tokyo_data.location+' Sales'
-art.appendChild(ul);
-tokyo_data.saleHr();
-ul.appendChild(li);
-li.textContent='Total :'+tokyo_data.totalSales;
 
-
-
-
-ul=document.createElement('ul');
-art.appendChild(ul);
-li=document.createElement('li');
-
-
-const dubai_data={
-  location: 'Dubai',
-  minCustHr:11,
-  maxCustHr:38,
-  avgSaleCust:3.7,
-  totalSales:0,
-  saleHr: function() {
-    for (let i=0; i<14;i++){
-      let time=['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-      let minCustHr=this.minCustHr;
-      let maxCustHr=this.maxCustHr;
-      let avgSaleCust=this.avgSaleCust;
-      let li=document.createElement('li');
-      ul.appendChild(li);
-      let numberSale=Math.floor(avgSaleCust*randomCust(minCustHr,maxCustHr));
-      this.totalSales+=numberSale;
-    li.textContent=time[i]+':'+numberSale+' cookies sold to '+randomCust(maxCustHr,minCustHr)+' customers.';
-    }
-
+  for (let j = 0; j < openHrsArray.length; j++) {
+    totalsalesNum += totalSales[j];
   }
-}
-function randomCust(min,max){
-  return Math.floor(Math.random()*(max-min+1)+min);
-}
-ul.textContent=dubai_data.location+' Sales'
-art.appendChild(ul);
-dubai_data.saleHr();
-ul.appendChild(li);
-li.textContent='Total :'+dubai_data.totalSales;
 
-
-ul=document.createElement('ul');
-art.appendChild(ul);
-li=document.createElement('li');
-
-
-const paris_data={
-  location: 'Paris',
-  minCustHr:20,
-  maxCustHr:38,
-  avgSaleCust:2.3,
-  totalSales:0,
-  saleHr: function() {
-    for (let i=0; i<14;i++){
-      let time=['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-      let minCustHr=this.minCustHr;
-      let maxCustHr=this.maxCustHr;
-      let avgSaleCust=this.avgSaleCust;
-      let li=document.createElement('li');
-      ul.appendChild(li);
-      let numberSale=Math.floor(avgSaleCust*randomCust(minCustHr,maxCustHr));
-      this.totalSales+=numberSale;
-    li.textContent=time[i]+':'+numberSale+' cookies sold to '+randomCust(maxCustHr,minCustHr)+' customers.';
-    }
-
-  }
-}
-function randomCust(min,max){
-  return Math.floor(Math.random()*(max-min+1)+min);
-}
-ul.textContent=paris_data.location+' Sales'
-art.appendChild(ul);
-paris_data.saleHr();
-ul.appendChild(li);
-li.textContent='Total :'+paris_data.totalSales;
-
-
-
-ul=document.createElement('ul');
-art.appendChild(ul);
-li=document.createElement('li');
-
-
-const lima_data={
-  location: 'Lima',
-  minCustHr:2,
-  maxCustHr:16,
-  avgSaleCust:4.6,
-  totalSales:0,
-  saleHr: function() {
-    for (let i=0; i<14;i++){
-      let time=['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-      let minCustHr=this.minCustHr;
-      let maxCustHr=this.maxCustHr;
-      let avgSaleCust=this.avgSaleCust;
-      let li=document.createElement('li');
-      ul.appendChild(li);
-      let numberSale=Math.floor(avgSaleCust*randomCust(minCustHr,maxCustHr));
-      this.totalSales+=numberSale;
-    li.textContent=time[i]+':'+numberSale+' cookies sold to '+randomCust(maxCustHr,minCustHr)+' customers.';
-    }
-
-  }
-}
-function randomCust(min,max){
-  return Math.floor(Math.random()*(max-min+1)+min);
-}
-ul.textContent=lima_data.location+' Sales'
-art.appendChild(ul);
-lima_data.saleHr();
-ul.appendChild(li);
-li.textContent='Total :'+lima_data.totalSales;
-
-
-const kittenbody=document.querySelectorAll('table tbody');
-for(let i=0;i<this.likes.length;i++){
-  let td=document.createElement('td');
-  td.textContent=this.likes[i]
-  tr.appendChild(td);}
-
+  const totalSalesCol = document.createElement("td");
+  tbodyElem.appendChild(totalSalesCol);
+  totalSalesCol.textContent = totalsalesNum;
 
   
+
+  totalsalesNum = 0;
+  totalSales = [];
+
+ 
+  };
+  
+
+
+//columnSum
+
+  
+
+
+
+
+//totl sum of each time column//
+
+const tfooter=document.createElement('tfooter');
+  tableElem.appendChild(tfooter);
+  const totalRow=document.createElement('th');
+  tfooter.appendChild(totalRow);
+  totalRow.textContent = 'Total Sum';
+
+
+
+  const totalsum=function(){
+    let columnSum=0
+    for(let x=0;x<arrayOfArrays.length;x++) {
+      
+      openHrsArray.id=x
+      for(let y=0;y<openHrsArray.length;y++){
+        arrayOfArrays.id=y
+        
+        columnSum=columnSum+(arrayOfArrays[x])[y];
+        
+      }
+    }return columnSum;
+  }
+
+  for(let x=0;x<openHrsArray.length;x++){
+  const dataRow=document.createElement('td');
+    tableElem.appendChild(dataRow);
+    dataRow.textContent=(totalsum());
+  }
+  
+    const totalSalesColfinal = document.createElement("td");
+    tableElem.appendChild(totalSalesColfinal);
+    totalSalesColfinal.textContent = totalsum();
+
+
+
+const seattle = new Sales("Seattle", 23, 65, 6.3);
+seattle.render();
+const tokyo = new Sales("Tokyo", 3, 24, 1.2);
+tokyo.render();
+const dubai = new Sales("Dubai", 11, 38, 3, 7);
+dubai.render();
+const paris = new Sales("Paris", 20, 38, 2.3);
+paris.render();
+const lima = new Sales("Lima", 2, 16, 4.6);
+lima.render();
+
+let form = document.querySelector(`form`);
+console.log(form);
+
+// 3. Declar an event handler (a function)
+let handleSubmit = function (event) {
+  event.preventDefault();
+  console.log("the form submitted");
+  console.log(event.target.location.value);
+
+  let name = event.target.location.value;
+  let avgSalePerCust = parseInt(event.target.avgSalePerCust.value);
+  let minCust = parseInt(event.target.minCust.value);
+  let maxCust = parseInt(event.target.maxCust.value);
+
+  // function Sale(name, about, src, alt, likes) {
+  let newstore = new Sales(name, minCust, maxCust, avgSalePerCust);
+  newstore.render();
+};
+
+// 2. Add event listener
+// what type of event? Submit
+
+form.addEventListener("submit", handleSubmit);
