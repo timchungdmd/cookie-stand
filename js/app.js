@@ -135,21 +135,23 @@ const tfooter=document.createElement('tfooter');
 
 
   let totalsum=function(){
+    
     for(let x=0;x<openHrsArray.length;x++) {
+      
       openHrsArray.id=x
       for(let y=0;y<arrayOfArrays.length;y++){
         arrayOfArrays.id=y
         columnTotal+=(arrayOfArrays[y])[x];
-        return columnTotal;
+        
       }
-      
+      return columnTotal;
     }
-  
+    
   }
   for(let z=0;z<openHrsArray.length;z++) {
   const dataRow=document.createElement('td');
     tableElem.appendChild(dataRow);
-    dataRow.textContent=totalsum;
+    dataRow.textContent=totalsum();
   }
 
 

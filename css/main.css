@@ -106,13 +106,12 @@ footer{
   text-align: center;
 }
 table{
+  display:inside;
   box-sizing: border-box;
-  box-shadow: 1rem;
   flex-direction: row;
   margin: auto;
-  align-content: center;
   border-style: solid;
-  border-color: rgba(127, 255, 212, 0.151);
+  border-color: rgba(127, 255, 212, 0.151)
 }
 
 
