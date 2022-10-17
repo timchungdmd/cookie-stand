@@ -54,7 +54,11 @@ ul input{
   padding: 0.1rem;
   
 }
-
+iframe{
+  margine:auto;
+  box-sizing: border-box;
+  
+}
 li label{
   font-weight:bold;
 }
