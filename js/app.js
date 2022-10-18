@@ -135,31 +135,32 @@ const tfooter=document.createElement('tfooter');
   tfooter.appendChild(totalRow);
   totalRow.textContent = 'Total Sum';
 
-
+  let columnSum=0
 
   const totalsum=function(){
-    let columnSum=0
-    for(let x=0;x<arrayOfArrays.length;x++) {
-      
-      openHrsArray.id=x
-      for(let y=0;y<openHrsArray.length;y++){
-        arrayOfArrays.id=y
-        
-        columnSum=columnSum+(arrayOfArrays[x])[y];
-        
-      }
-    }return columnSum;
-  }
+    let x=0
+    for(x=0; x<arrayOfArrays.length; x++){
+      for(let y=0;y<arrayOfArrays[x].length;y++){
+        let firstlayer=console.log(arrayOfArrays[y])
 
-  for(let x=0;x<openHrsArray.length;x++){
-  const dataRow=document.createElement('td');
-    tableElem.appendChild(dataRow);
-    dataRow.textContent=(totalsum());
+        columnSum+=arrayOfArrays[y][x];
+      }  
+    }console.log(columnSum);
+    return columnSum;
   }
+  totalsum();
+
+  for(let c=0;c<openHrsArray.length;c++){
+    const dataRow=document.createElement('td');
+    tableElem.appendChild(dataRow);
+    dataRow.textContent=columnSum;
+    }   
+
+  const dataRow=document.createElement('td');
+      tableElem.appendChild(dataRow);
+      dataRow.textContent=totalsum(); 
   
-    const totalSalesColfinal = document.createElement("td");
-    tableElem.appendChild(totalSalesColfinal);
-    totalSalesColfinal.textContent = totalsum();
+
 
 
 
